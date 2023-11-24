@@ -30,15 +30,11 @@ const actions = [
     hasIcon: false,
   },
 ]
-
-function openWindow(actionName: string) {
-  console.log(actionName)
-}
 </script>
 
 <template>
   <Menu v-slot="{ open }" as="div" class="font-mono relative border-r border-gray-700 dark:border-white">
-    <MenuButton class="px-2" :class="[{ 'bg-gray:80 dark:bg-black': open }]">
+    <MenuButton class="px-2" :class="[{ 'bg-gray:80 dark:bg-gray:40': open }]">
       antoineOS
     </MenuButton>
     <MenuItems class="flex flex-col items-start absolute bg-white dark:bg-black border border-gray-700 dark:border-white z-[9999]">

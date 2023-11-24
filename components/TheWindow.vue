@@ -17,6 +17,11 @@ const draggableOptions: DragOptions = {
   bounds: 'parent',
   handle: '.window-bar',
   axis: 'both',
+  recomputeBounds: {
+    dragStart: true,
+    drag: true,
+    dragEnd: true,
+  },
   onDragStart: () => {
     if (zIndexValue.value > 9998)
       zIndexValue.value = 1
@@ -26,7 +31,7 @@ const draggableOptions: DragOptions = {
 </script>
 
 <template>
-  <div v-draggable="draggableOptions" class="window absolute border-gray-700 dark:border-white border bg-white dark:bg-black" :style="{ width: `${width}px`, height: `${height}px`, zIndex: zIndexValue }">
+  <div v-draggable="draggableOptions" class="window absolute border-gray-700 dark:border-white border bg-white dark:bg-black" :style="{ maxWidth: `${width}px`, maxHeight: `${height}px`, zIndex: zIndexValue }">
     <div class="window-bar flex items-center justify-between border-b border-gray-700 dark:border-white cursor-pointer pr-2">
       <button class="border-r border-gray-700 dark:border-white h-6 w-6 flex items-center justify-center" @click="emits('close')">
         <Icon class="h-4 w-4" name="carbon:close" />
@@ -38,3 +43,14 @@ const draggableOptions: DragOptions = {
     </div>
   </div>
 </template>
+
+<style>
+.window {
+  width: calc(100% - 1rem);
+  height: calc(100% - 1rem);
+}
+
+.neodrag-dragging .window-bar {
+  @apply bg-gray:20;
+}
+</style>
